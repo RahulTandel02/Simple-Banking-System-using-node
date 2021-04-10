@@ -1,6 +1,0 @@
-1. alert  //
-2. slug vala
-3. footer // 
-4. pagging //
-5. Smooth scroll//
-
