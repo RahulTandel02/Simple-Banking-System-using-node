@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/info.css">
+</head>
+<body>
+    <div class="heading">
+        <label>Transfer Money</label>
+    </div>
+    <div class="parent">
+        <div class="container">
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Balance</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.Name %></td>
+                        <td><%= user.Email %></td>
+                        <td><%= user.Balance %></td>
+                    </tr>
+                </table>
+                </div><br>
+                <div class="form">
+                    <div class="heading">
+                        <label>Transaction Form</label>
+                    </div>
+                    <form action="/?_method=PUT" method="POST">
+    
+                        <input type="text" name="from" id="from" value="<%= user.Name%>" placeholder="Name" size="40" class="input-1"><br> 
+                        <select name="to" id="to">
+                            <% allusers.forEach(alluser => {%>
+                                <% if(alluser.Name != user.Name){%>
+                                    <option value="<%= alluser.Name%>"><%= alluser.Name%></option>
+                                <%} %>
+                            <% }) %>
+                        </select><br>
+                        <input type="text" name="amount" id="amount" required placeholder="Amount" size="40" class="input-2" autocomplete="off"><br><br>
+                        <div class="input">
+                            <input type="submit" value="Transfer" class="btnsubmit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking System</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://kit.fontawesome.com/1f645e8ec3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css" integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/really-simple-jquery-dialog.css">
+</head>
+<body>
+    <div id="testAlert"></div>
+    <div class="all">
+    <div class="head">
+            <div class="container">
+                <div class="pos">
+                    <div class="icons">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="contact">
+                        <i class="fas fa-phone"></i>
+                        <span>+87 11544 4564</span>
+                    </div>
+                </div>
+            
+                <div class="navbar">
+                    <label class="logo">BANKING</label>
+                    <nav>
+                        <ul>
+                            <span><li><a href="#">Home</a></li></span>
+                            <li><a href="#table">Customer</a></li>
+                            <li><a href="#transfertable">Transactions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    </div>
+        <div class="main">
+            <div class="resolution"></div>
+            <div class="system">Banking System</div>
+        </div>
+    <div class="table" id="table">
+        <div>
+            <div class="d">
+                <div class="heading">
+                    <label>Customer Table</label>
+                </div>
+                <h1 id="head"></h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Account</th>
+                            <th>Transfer</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+                <div id="pagination-wrapper"></div>
+                <div class="link">
+                    <a href="/new">Create user</a>
+                </div>
+            </div>
+         <div class="transfertable" id="transfertable">
+            <div>
+                <div class="heading">
+                    <label>
+                        Transaction Table
+                    </label>
+                </div>
+           
+                <table>
+                    <thead>
+                        <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Amount</th>
+                        <th>Transaction_ID</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body-1"></tbody>
+                </table>
+                <div id="pagination-wrapper-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-container">
+        <div class="logo">
+            <label>Banking System</label>
+        </div>
+        <div class="made">
+            <label>Made By </label>
+        </div>
+        <div class="name">
+            <label class="name">Rahul Tandel</label>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="./js/really-simple-jquery-dialog.js"></script>
+<script src="/js/user.js"></script>
+<script src="/js/transaction.js"></script>
+<script>
+    var success = "<%= success  %>";
+    if(success){
+        $( function(e) {
+		$('#testAlert').simpleAlert({
+			message: "<%- success%>"
+		});
+	});
+    } 
+
+
+    var tableData = <%- JSON.stringify(customers)%>;
+    var tableData1 = <%- JSON.stringify(transactions)%>;
+
+    var state = {
+    'querySet': tableData,
+
+    'page': 1,
+    'rows': 10,
+    'window': 5,
+    }
+    var state1 = {
+    'querySet': tableData1,
+
+    'page': 1,
+    'rows': 10,
+    'window': 5,
+    }
+    
+
+    buildTable()
+    buildTable1()
+
+</script>
+</html>
